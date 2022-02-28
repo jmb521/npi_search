@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+
+.provider_data td .provider_data th {
+     border: 1px solid rgba(221, 221, 221, 0.432)
+ }
+
+ .provider_data td, .provider_data tr {
+     padding: 5px;
+ }
+ .provider_data thead {
+     background-color: blue; 
+     color: white; 
+ }
+
+ .provider_data tr:nth-child(even){
+     background-color: #d2d8fa;
+ }
+
+ .wrapper {
+     margin: 0 auto; 
+     width: 85%
+ }
+
+ 

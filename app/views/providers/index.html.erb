@@ -1,0 +1,60 @@
+
+<h1>Provider Search: </h1>
+<%= form_with url:"/providers", method: :get do |f| %>
+    <%= f.label :number %>
+    <%= f.text_field :number, placeholder: "Enter provider number" %>
+    <%= f.submit value: "Search" %>
+<% end %>
+<% if @error %>
+    <div class="error">
+        <%= @error %>
+    </div>
+<% end %>
+<br />
+<br />
+<table class="provider_data">
+    <thead>
+        <tr>
+            <td>NPI: </td>
+            <td>First Name: </td>
+        
+            <td>Last Name: </td>
+            <td>Gender: </td>
+            <td>Prefix: </td>
+            <td>Credential: </td>
+            <td>Status: </td>
+            <td>Type: </td>
+            <td>Taxonomy</td>
+            <td>Address 1: </td>
+            <td>Address 2: </td>
+            <td>City: </td>
+            <td>State: </td>
+            <td>Country Code: </td>
+            <td>Postal Code</td>
+        <tr>
+    </thead>
+    <tbody>
+    <% @providers.each do |provider| %>
+        <tr data-id=<%= provider.npi %>>
+            <td><%= provider.npi %></td>
+            <td><%= provider.first_name %></td>
+            <td><%= provider.last_name %></td>
+            <td><%= provider.gender %></td>
+            <td><%= provider.prefix %></td>
+            <td><%= provider.credential %></td>
+            <td><%= provider.status %></td>
+            <td><%= provider.enumeration_type %></td>
+            <td><%= provider.taxonomy %></td> 
+            <% if !provider.addresses.empty? %>
+                <td><%= provider.addresses[0].address_1 %></td>                </td>
+                <td><%= provider.addresses[0].address_2 %></td>
+                <td><%= provider.addresses[0].city %></td>
+                <td><%= provider.addresses[0].state %></td>
+                <td><%= provider.addresses[0].country_code %></td>
+                <td><%= provider.addresses[0].postal_code %></td>
+                
+            <% end %>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
